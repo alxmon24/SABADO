@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sabado Console</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="chat-shell">
+      <header class="chat-header">SABADO // INTERFAZ</header>
+      <section id="chatBox" class="chat-box"></section>
+      <form id="chatForm" class="chat-form">
+        <input id="mensajeInput" type="text" placeholder="Escribe tu mensaje..." autocomplete="off" required />
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
