@@ -4,6 +4,7 @@
   --neon: #3cf2ff;
   --text: #d5f9ff;
   --muted: #7f9ca8;
+  --danger: #ff6d6d;
 }
 
 * {
@@ -68,12 +69,13 @@ body {
 .chat-form {
   border-top: 1px solid #1f3344;
   padding: 12px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
   gap: 10px;
 }
 
 input {
-  flex: 1;
+  width: 100%;
   padding: 10px;
   border: 1px solid #264657;
   background: #08111a;
@@ -86,4 +88,20 @@ button {
   background: #0f2830;
   color: var(--neon);
   cursor: pointer;
+  white-space: nowrap;
+}
+
+button.is-recording {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+button.is-active {
+  border-color: #2f7378;
+}
+
+@media (max-width: 720px) {
+  .chat-form {
+    grid-template-columns: 1fr 1fr;
+  }
 }

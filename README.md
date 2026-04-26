@@ -11,6 +11,8 @@ Backend en Flask para un asistente tipo Jarvis llamado **Sabado**, con memoria e
   - Guarda conversación (mensaje de usuario y respuesta)
   - Recupera contexto de las últimas 5 interacciones para enviar a OpenAI
 - Interfaz web en `/` (HTML + CSS + JavaScript)
+- Reconocimiento de voz (Web Speech API): botón de micrófono para pasar voz a texto
+- Text-to-speech (speechSynthesis): lectura en voz alta de respuestas, con toggle ON/OFF
 
 ## Estructura
 
@@ -21,7 +23,7 @@ Backend en Flask para un asistente tipo Jarvis llamado **Sabado**, con memoria e
 - `app/services/memory_service.py`: SQLite (guardar y recuperar contexto)
 - `app/templates/index.html`: UI del chat
 - `app/static/styles.css`: estilo oscuro futurista
-- `app/static/app.js`: lógica de frontend con `fetch`
+- `app/static/app.js`: lógica frontend con `fetch`, voz a texto y texto a voz
 - `run.py`: ejecución local
 
 ## Requisitos
@@ -29,7 +31,7 @@ Backend en Flask para un asistente tipo Jarvis llamado **Sabado**, con memoria e
 - Python 3.10+
 - API key de OpenAI
 
-## Cómo correr
+## Cómo arrancar el programa
 
 1) Crear entorno virtual e instalar dependencias:
 
@@ -43,6 +45,7 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
+# Abre .env y pon tu clave real en OPENAI_API_KEY
 export $(cat .env | xargs)
 ```
 
@@ -64,7 +67,6 @@ curl -X POST http://localhost:5000/chat \
   -d '{"mensaje":"Hola Sabado"}'
 ```
 
-## Notas
+## Nota sobre API Key
 
-- La base SQLite se crea automáticamente en `data/sabado.db`.
-- Puedes cambiar ruta de DB con `SQLITE_DB_PATH`.
+En el README solo va un ejemplo; por seguridad no se debe dejar la clave real en texto plano dentro del repositorio.
